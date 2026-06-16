@@ -300,6 +300,39 @@
       color: #6b7280;
       margin-top: 0.3rem;
     }
+
+    /* Radio buttons */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.875rem;
+      color: #374151;
+      cursor: pointer;
+      padding: 0.45rem 0.7rem;
+      border-radius: 5px;
+      border: 1.5px solid transparent;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .radio-label:hover { background: #f0f5fb; border-color: #c9d9ed; }
+    .radio-label input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #2e86c1;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .radio-label:has(input:checked) {
+      background: #e8f4fd;
+      border-color: #2e86c1;
+      color: #0a2342;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -349,125 +382,23 @@
         <div>
           <div class="form-card">
             <h2>Member Registration</h2>
-            <p class="form-subtitle">Complete the form below to join the UKRIN mailing list and become part of the network. All fields marked <span style="color:#e53e3e">*</span> are required.</p>
+            <p class="form-subtitle">Complete the form below to join the UKRIN mailing list. Your response goes directly and securely to the UKRIN team via Microsoft Forms.</p>
 
-            <div id="formWrap">
-              <form id="joinForm" novalidate>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="firstName">First Name <span class="req">*</span></label>
-                    <input type="text" id="firstName" name="firstName" placeholder="e.g. Sarah" required autocomplete="given-name" />
-                  </div>
-                  <div class="form-group">
-                    <label for="lastName">Last Name <span class="req">*</span></label>
-                    <input type="text" id="lastName" name="lastName" placeholder="e.g. Johnson" required autocomplete="family-name" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email Address <span class="req">*</span></label>
-                  <input type="email" id="email" name="email" placeholder="you@institution.ac.uk" required autocomplete="email" />
-                  <p class="field-hint">Please use your institutional email address where possible.</p>
-                </div>
-
-                <div class="form-group">
-                  <label for="institute">Institute / Organisation <span class="req">*</span></label>
-                  <input type="text" id="institute" name="institute" placeholder="e.g. University of Nottingham" required autocomplete="organization" />
-                </div>
-
-                <div class="form-group">
-                  <label for="role">Role / Job Title</label>
-                  <input type="text" id="role" name="role" placeholder="e.g. MR Physicist, Nephrologist, PhD Student" autocomplete="organization-title" />
-                </div>
-
-                <div class="form-group">
-                  <label for="country">Country</label>
-                  <select id="country" name="country">
-                    <option value="">— Select country —</option>
-                    <option value="UK" selected>United Kingdom</option>
-                    <option value="IE">Ireland</option>
-                    <option value="DE">Germany</option>
-                    <option value="NL">Netherlands</option>
-                    <option value="FR">France</option>
-                    <option value="SE">Sweden</option>
-                    <option value="NO">Norway</option>
-                    <option value="DK">Denmark</option>
-                    <option value="CH">Switzerland</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="AU">Australia</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label>Area of Interest <span class="req">*</span></label>
-                  <p class="field-hint" style="margin-bottom:.6rem">Select all that apply.</p>
-                  <div class="checkbox-group" id="interests">
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="MRI Physics & Acquisition" /> MRI Physics &amp; Acquisition
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Image Processing & AI" /> Image Processing &amp; AI
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Chronic Kidney Disease (CKD)" /> Chronic Kidney Disease (CKD)
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Acute Kidney Injury (AKI)" /> Acute Kidney Injury (AKI)
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Renal Transplantation" /> Renal Transplantation
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Ultrasound & CT" /> Ultrasound &amp; CT
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Preclinical MRI" /> Preclinical MRI
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Drug Development & Industry" /> Drug Development &amp; Industry
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Clinical Radiology" /> Clinical Radiology
-                    </label>
-                    <label class="checkbox-label">
-                      <input type="checkbox" name="interest" value="Multiorgan / Whole-body Imaging" /> Multiorgan / Whole-body Imaging
-                    </label>
-                  </div>
-                  <p class="field-hint" id="interest-error" style="color:#e53e3e;display:none;margin-top:.5rem">Please select at least one area of interest.</p>
-                </div>
-
-                <div class="form-group">
-                  <label for="message">Anything else you'd like to share? <span style="font-weight:400;color:#9ca3af">(optional)</span></label>
-                  <textarea id="message" name="message" placeholder="e.g. specific research interests, existing collaborations, or how you heard about UKRIN..."></textarea>
-                </div>
-
-                <div class="gdpr-notice">
-                  <strong>Data &amp; privacy:</strong> Your details will be held securely by UKRIN / Kidney Research UK and used only to send you network communications and meeting invitations. You can unsubscribe at any time by emailing the coordinating team. We will not share your data with third parties. By submitting this form you consent to this use.
-                </div>
-
-                <button type="submit" class="btn-submit">Register as a UKRIN Member &rarr;</button>
-
-                <p id="form-error" style="color:#e53e3e;font-size:0.82rem;margin-top:.8rem;display:none;">Please fill in all required fields before submitting.</p>
-
-              </form>
-            </div>
-
-            <!-- Success state (shown after submit) -->
-            <div class="success-message" id="successMsg">
-              <div class="success-icon">&#10003;</div>
-              <h3>Welcome to UKRIN!</h3>
-              <p>Thank you for registering. Your details have been submitted and you'll receive a confirmation email shortly.<br><br>
-              You'll now receive invitations to national meetings, funding updates, and network news. We look forward to working with you.</p>
-            </div>
-
-          </div>
+            <iframe
+              src="https://forms.office.com/Pages/ResponsePage.aspx?id=7qe9Z4D970GskTWEGCkKHmWx8t3Uj1FLsx_rCRkB3mlUMVM1TVdGNFlMSjY2OE9WTTRERkszR1dPUy4u&embed=true"
+              width="100%"
+              height="820"
+              frameborder="0"
+              marginwidth="0"
+              marginheight="0"
+              style="border:none;min-height:700px;"
+              allowfullscreen
+              title="UKRIN Membership Registration Form"
+            ></iframe>
 
           <p style="font-size:0.78rem;color:#6b7280;margin-top:1rem;text-align:center;">
-            Prefer to use our Microsoft Form directly?
-            <a href="https://forms.office.com/e/J5PfHRWqjK" target="_blank" rel="noopener" style="color:#2e86c1;">Open the MS Form &rarr;</a>
+            Form not displaying?
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=7qe9Z4D970GskTWEGCkKHmWx8t3Uj1FLsx_rCRkB3mlUMVM1TVdGNFlMSjY2OE9WTTRERkszR1dPUy4u" target="_blank" rel="noopener" style="color:#2e86c1;">Open it in a new tab &rarr;</a>
           </p>
         </div>
 
@@ -532,79 +463,5 @@
   </footer>
 
   <script src="nav.js"></script>
-  <script>
-    // Form validation & submission
-    document.getElementById('joinForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      var valid = true;
-      var errEl = document.getElementById('form-error');
-      var intErr = document.getElementById('interest-error');
-
-      // Required text/email fields
-      ['firstName','lastName','email','institute'].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (!el.value.trim()) {
-          el.style.borderColor = '#e53e3e';
-          valid = false;
-        } else {
-          el.style.borderColor = '';
-        }
-      });
-
-      // Email format
-      var emailEl = document.getElementById('email');
-      if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
-        emailEl.style.borderColor = '#e53e3e';
-        valid = false;
-      }
-
-      // At least one interest
-      var checked = document.querySelectorAll('input[name="interest"]:checked');
-      if (checked.length === 0) {
-        intErr.style.display = 'block';
-        valid = false;
-      } else {
-        intErr.style.display = 'none';
-      }
-
-      if (!valid) {
-        errEl.style.display = 'block';
-        return;
-      }
-
-      errEl.style.display = 'none';
-
-      // Collect data
-      var data = {
-        firstName: document.getElementById('firstName').value.trim(),
-        lastName: document.getElementById('lastName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        institute: document.getElementById('institute').value.trim(),
-        role: document.getElementById('role').value.trim(),
-        country: document.getElementById('country').value,
-        interests: Array.from(checked).map(function(c){ return c.value; }),
-        message: document.getElementById('message').value.trim(),
-        submittedAt: new Date().toISOString()
-      };
-
-      console.log('UKRIN membership submission:', data);
-
-      // Show success
-      document.getElementById('formWrap').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
-
-      // Scroll to success
-      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    // Clear red border on input
-    document.querySelectorAll('.form-card input, .form-card select, .form-card textarea').forEach(function(el) {
-      el.addEventListener('input', function() {
-        this.style.borderColor = '';
-        document.getElementById('form-error').style.display = 'none';
-      });
-    });
-  </script>
 </body>
 </html>
