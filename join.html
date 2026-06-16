@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join UKRIN — UK Renal Imaging Network</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- MEMBERSHIP PAGE SPECIFIC STYLES ---- */
+    .join-hero {
+      background: linear-gradient(135deg, #0a2342 0%, #1a3a6e 60%, #0e4d6e 100%);
+      padding: 4rem 0 3.5rem;
+      border-bottom: 3px solid #00b4d8;
+      position: relative;
+      overflow: hidden;
+    }
+    .join-hero::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      border: 60px solid rgba(0,180,216,0.08);
+    }
+    .join-hero::after {
+      content: '';
+      position: absolute;
+      right: 60px; top: 40px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      border: 30px solid rgba(0,180,216,0.07);
+    }
+    .join-hero .container { position: relative; z-index: 1; }
+    .join-hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #00b4d8;
+      margin-bottom: 0.8rem;
+    }
+    .join-hero h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .join-hero p {
+      font-size: 1.05rem;
+      color: #aed6f1;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* Benefits strip */
+    .benefits-strip {
+      background: #00b4d8;
+      padding: 1.4rem 0;
+    }
+    .benefits-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .benefit-item span { font-size: 1rem; }
+
+    /* Form layout */
+    .join-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .join-layout { grid-template-columns: 1fr; }
+      .join-sidebar { order: -1; }
+    }
+
+    /* Form card */
+    .form-card {
+      background: #fff;
+      border: 1px solid #dce8f5;
+      border-radius: 10px;
+      padding: 2.4rem 2.2rem;
+      box-shadow: 0 8px 32px rgba(10,35,66,0.10);
+    }
+    .form-card h2 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      color: #0a2342;
+      margin-bottom: 0.4rem;
+    }
+    .form-card .form-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1a3a6e;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .form-group label .req {
+      color: #e53e3e;
+      margin-left: 2px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      border: 1.5px solid #c9d9ed;
+      border-radius: 6px;
+      background: #f8fbff;
+      color: #111827;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #2e86c1;
+      box-shadow: 0 0 0 3px rgba(46,134,193,0.15);
+      background: #fff;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #9ca3af; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232e86c1' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; padding-right: 2.4rem; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* Checkboxes */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 0.3rem;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      color: #374151;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      border: 1.5px solid #c9d9ed;
+      border-radius: 3px;
+      background: #f8fbff;
+      cursor: pointer;
+      flex-shrink: 0;
+      accent-color: #2e86c1;
+    }
+
+    /* GDPR notice */
+    .gdpr-notice {
+      background: #f0f5fb;
+      border: 1px solid #dce8f5;
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+    .gdpr-notice strong { color: #374151; }
+
+    /* Submit button */
+    .btn-submit {
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      background: #2e86c1;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit:hover { background: #1a5276; }
+    .btn-submit:active { transform: scale(0.99); }
+
+    /* Success state */
+    .success-message {
+      display: none;
+      background: #d1fae5;
+      border: 1px solid #6ee7b7;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .success-message .success-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .success-message h3 { font-family: Georgia, serif; font-size: 1.3rem; color: #065f46; margin-bottom: 0.5rem; }
+    .success-message p { font-size: 0.9rem; color: #047857; line-height: 1.6; }
+
+    /* Sidebar */
+    .join-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .sidebar-card {
+      background: #f0f5fb;
+      border: 1px solid #dce8f5;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .sidebar-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0a2342;
+      margin-bottom: 0.8rem;
+    }
+    .sidebar-card p, .sidebar-card li {
+      font-size: 0.82rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+    .sidebar-card ul {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .sidebar-quote {
+      background: #0a2342;
+      color: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .sidebar-quote blockquote {
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #aed6f1;
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+    .sidebar-quote cite {
+      font-size: 0.75rem;
+      color: #5dade2;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .member-count {
+      background: #2e86c1;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      color: #fff;
+    }
+    .member-count strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 2.4rem;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .member-count span { font-size: 0.8rem; color: #aed6f1; }
+
+    /* Field hint */
+    .field-hint {
+      font-size: 0.74rem;
+      color: #6b7280;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:.75rem">
+          <img src="ukrin-logo.jpg" alt="UKRIN logo" style="height:44px;width:auto;display:block;" />
+        </a>
+      </div>
+      <nav class="main-nav" role="navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="studies.html" class="nav-link">Studies</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="join.html" class="nav-link nav-join active">Join</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <section class="join-hero">
+    <div class="container">
+      <div class="join-hero-eyebrow">UKRIN Membership · Free to Join</div>
+      <h1>Become a UKRIN Member</h1>
+      <p>Join the UK's leading network of MR physicists, radiologists, clinicians, and researchers dedicated to transforming kidney health through imaging technology.</p>
+    </div>
+  </section>
+
+  <div class="benefits-strip">
+    <div class="benefits-inner">
+      <div class="benefit-item"><span>&#128202;</span> Access to UKRIN resources &amp; protocols</div>
+      <div class="benefit-item"><span>&#128100;</span> Invitations to national meetings</div>
+      <div class="benefit-item"><span>&#128232;</span> Network newsletter &amp; updates</div>
+      <div class="benefit-item"><span>&#129309;</span> Collaboration opportunities</div>
+      <div class="benefit-item"><span>&#128203;</span> Early access to funding calls</div>
+    </div>
+  </div>
+
+  <section class="page-section">
+    <div class="container">
+      <div class="join-layout">
+
+        <!-- FORM -->
+        <div>
+          <div class="form-card">
+            <h2>Member Registration</h2>
+            <p class="form-subtitle">Complete the form below to join the UKRIN mailing list and become part of the network. All fields marked <span style="color:#e53e3e">*</span> are required.</p>
+
+            <div id="formWrap">
+              <form id="joinForm" novalidate>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name <span class="req">*</span></label>
+                    <input type="text" id="firstName" name="firstName" placeholder="e.g. Sarah" required autocomplete="given-name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name <span class="req">*</span></label>
+                    <input type="text" id="lastName" name="lastName" placeholder="e.g. Johnson" required autocomplete="family-name" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="you@institution.ac.uk" required autocomplete="email" />
+                  <p class="field-hint">Please use your institutional email address where possible.</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="institute">Institute / Organisation <span class="req">*</span></label>
+                  <input type="text" id="institute" name="institute" placeholder="e.g. University of Nottingham" required autocomplete="organization" />
+                </div>
+
+                <div class="form-group">
+                  <label for="role">Role / Job Title</label>
+                  <input type="text" id="role" name="role" placeholder="e.g. MR Physicist, Nephrologist, PhD Student" autocomplete="organization-title" />
+                </div>
+
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <select id="country" name="country">
+                    <option value="">— Select country —</option>
+                    <option value="UK" selected>United Kingdom</option>
+                    <option value="IE">Ireland</option>
+                    <option value="DE">Germany</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="FR">France</option>
+                    <option value="SE">Sweden</option>
+                    <option value="NO">Norway</option>
+                    <option value="DK">Denmark</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Area of Interest <span class="req">*</span></label>
+                  <p class="field-hint" style="margin-bottom:.6rem">Select all that apply.</p>
+                  <div class="checkbox-group" id="interests">
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="MRI Physics & Acquisition" /> MRI Physics &amp; Acquisition
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Image Processing & AI" /> Image Processing &amp; AI
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Chronic Kidney Disease (CKD)" /> Chronic Kidney Disease (CKD)
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Acute Kidney Injury (AKI)" /> Acute Kidney Injury (AKI)
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Renal Transplantation" /> Renal Transplantation
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Ultrasound & CT" /> Ultrasound &amp; CT
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Preclinical MRI" /> Preclinical MRI
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Drug Development & Industry" /> Drug Development &amp; Industry
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Clinical Radiology" /> Clinical Radiology
+                    </label>
+                    <label class="checkbox-label">
+                      <input type="checkbox" name="interest" value="Multiorgan / Whole-body Imaging" /> Multiorgan / Whole-body Imaging
+                    </label>
+                  </div>
+                  <p class="field-hint" id="interest-error" style="color:#e53e3e;display:none;margin-top:.5rem">Please select at least one area of interest.</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Anything else you'd like to share? <span style="font-weight:400;color:#9ca3af">(optional)</span></label>
+                  <textarea id="message" name="message" placeholder="e.g. specific research interests, existing collaborations, or how you heard about UKRIN..."></textarea>
+                </div>
+
+                <div class="gdpr-notice">
+                  <strong>Data &amp; privacy:</strong> Your details will be held securely by UKRIN / Kidney Research UK and used only to send you network communications and meeting invitations. You can unsubscribe at any time by emailing the coordinating team. We will not share your data with third parties. By submitting this form you consent to this use.
+                </div>
+
+                <button type="submit" class="btn-submit">Register as a UKRIN Member &rarr;</button>
+
+                <p id="form-error" style="color:#e53e3e;font-size:0.82rem;margin-top:.8rem;display:none;">Please fill in all required fields before submitting.</p>
+
+              </form>
+            </div>
+
+            <!-- Success state (shown after submit) -->
+            <div class="success-message" id="successMsg">
+              <div class="success-icon">&#10003;</div>
+              <h3>Welcome to UKRIN!</h3>
+              <p>Thank you for registering. Your details have been submitted and you'll receive a confirmation email shortly.<br><br>
+              You'll now receive invitations to national meetings, funding updates, and network news. We look forward to working with you.</p>
+            </div>
+
+          </div>
+
+          <p style="font-size:0.78rem;color:#6b7280;margin-top:1rem;text-align:center;">
+            Prefer to use our Microsoft Form directly?
+            <a href="https://forms.office.com/e/J5PfHRWqjK" target="_blank" rel="noopener" style="color:#2e86c1;">Open the MS Form &rarr;</a>
+          </p>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="join-sidebar">
+
+          <div class="member-count">
+            <strong>15+</strong>
+            <span>Major UK research centres in the network</span>
+          </div>
+
+          <div class="sidebar-quote">
+            <blockquote>"Bringing together major UK renal MRI research centres through a national group of MR physicists, radiologists, and clinicians dedicated to developing imaging methods to study the kidney."</blockquote>
+            <cite>— UKRIN Mission Statement</cite>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Who should join?</h3>
+            <ul>
+              <li>MR physicists working in renal imaging</li>
+              <li>Nephrologists and renal clinicians</li>
+              <li>Radiologists with an interest in kidney disease</li>
+              <li>Early career researchers and PhD students</li>
+              <li>Industry partners in MRI and renal health</li>
+              <li>International collaborators in renal MRI</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>What happens next?</h3>
+            <p>After registering you will be added to the UKRIN mailing list. You will receive:</p>
+            <ul style="margin-top:.5rem">
+              <li>Invitations to national UKRIN meetings</li>
+              <li>Network newsletters and study updates</li>
+              <li>Notifications of funding calls (NIHR, MRC, Horizon)</li>
+              <li>Access to shared protocols and UKAT software</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card" style="border-top:3px solid #00b4d8;">
+            <h3>Questions?</h3>
+            <p>Contact the UKRIN coordinating team via <a href="https://www.kidneyresearchuk.org/research/uk-renal-imaging-network" target="_blank" rel="noopener" style="color:#2e86c1;">Kidney Research UK</a> or find us at <a href="https://renalmri.org" target="_blank" rel="noopener" style="color:#2e86c1;">renalmri.org</a>.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="ukrin-logo.jpg" alt="UKRIN" style="height:36px;width:auto;margin-bottom:.4rem;display:block;" />
+        <p>UK Renal Imaging Network<br>Supported by the UK Kidney Research Consortium (UKKRC)</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.kidneyresearchuk.org/research/uk-renal-imaging-network" target="_blank" rel="noopener">kidneyresearchuk.org</a>
+        <a href="https://renalmri.org" target="_blank" rel="noopener">renalmri.org</a>
+        <a href="https://github.com/UKRIN-MAPS/ukat" target="_blank" rel="noopener">UKAT on GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script>
+    // Form validation & submission
+    document.getElementById('joinForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var valid = true;
+      var errEl = document.getElementById('form-error');
+      var intErr = document.getElementById('interest-error');
+
+      // Required text/email fields
+      ['firstName','lastName','email','institute'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.style.borderColor = '#e53e3e';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+
+      // Email format
+      var emailEl = document.getElementById('email');
+      if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
+        emailEl.style.borderColor = '#e53e3e';
+        valid = false;
+      }
+
+      // At least one interest
+      var checked = document.querySelectorAll('input[name="interest"]:checked');
+      if (checked.length === 0) {
+        intErr.style.display = 'block';
+        valid = false;
+      } else {
+        intErr.style.display = 'none';
+      }
+
+      if (!valid) {
+        errEl.style.display = 'block';
+        return;
+      }
+
+      errEl.style.display = 'none';
+
+      // Collect data
+      var data = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        institute: document.getElementById('institute').value.trim(),
+        role: document.getElementById('role').value.trim(),
+        country: document.getElementById('country').value,
+        interests: Array.from(checked).map(function(c){ return c.value; }),
+        message: document.getElementById('message').value.trim(),
+        submittedAt: new Date().toISOString()
+      };
+
+      console.log('UKRIN membership submission:', data);
+
+      // Show success
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+
+      // Scroll to success
+      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // Clear red border on input
+    document.querySelectorAll('.form-card input, .form-card select, .form-card textarea').forEach(function(el) {
+      el.addEventListener('input', function() {
+        this.style.borderColor = '';
+        document.getElementById('form-error').style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

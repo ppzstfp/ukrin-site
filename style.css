@@ -602,3 +602,15 @@ body {
   .footer-inner { flex-direction: column; }
   .footer-links { align-items: flex-start; }
 }
+
+/* ---- JOIN NAV BUTTON ---- */
+.nav-join {
+  background: #00b4d8;
+  color: #fff !important;
+  border-radius: var(--radius);
+  padding: 0.4rem 1rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+.nav-join:hover { background: #0096b4 !important; color: #fff !important; }
+.nav-join.active { background: #0096b4 !important; }
