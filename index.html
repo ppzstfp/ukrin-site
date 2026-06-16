@@ -1,101 +1,247 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>UK Renal Imaging Network</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            background: #f5f5f5;
-        }
-        header {
-            background: #0b3c5d;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background: #1d7ea6;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        section {
-            padding: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 12px 20px;
-            background: #1d7ea6;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        img.logo {
-            width: 150px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UKRIN — UK Renal Imaging Network</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<header>
-    <img src="UKRINlogi.jpg" class="logo">
-    <h1>UK Renal Imaging Network</h1>
-    <p>Transforming kidney health through technology</p>
-</header>
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-abbr">UKRIN</span>
+        <span class="logo-full">UK Renal Imaging Network</span>
+      </div>
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="studies.html" class="nav-link">Studies</a>
+        <a href="news.html" class="nav-link">News</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#aims">Aims</a>
-    <a href="#projects">Projects</a>
-    <a href="#events">Events</a>
-</nav>
+  <!-- BANNER -->
+  <section class="hero">
+    <div class="hero-image" aria-hidden="true">
+      <svg class="hero-svg" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Deep anatomical blue gradient sky -->
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0a2342;stop-opacity:1" />
+            <stop offset="55%" style="stop-color:#1a3a6e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0e4d6e;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="kidneyL" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2e86c1;stop-opacity:0.85" />
+            <stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.9" />
+          </linearGradient>
+          <linearGradient id="kidneyR" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#2e86c1;stop-opacity:0.85" />
+            <stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.9" />
+          </linearGradient>
+          <radialGradient id="mriGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#5dade2;stop-opacity:0.3" />
+            <stop offset="100%" style="stop-color:#0a2342;stop-opacity:0" />
+          </radialGradient>
+          <filter id="blur">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+        </defs>
 
-<section id="about">
-    <h2>About UKRIN</h2>
-    <p>
-        UKRIN brings together UK renal MRI research centres, including
-        physicists, clinicians, and radiologists, to advance imaging methods
-        for kidney disease.
-    </p>
-</section>
+        <!-- Background -->
+        <rect width="1200" height="420" fill="url(#bgGrad)" />
 
-<section id="aims">
-    <h2>Aims</h2>
-    <ul>
-        <li>Develop harmonised kidney imaging methods</li>
-        <li>Support multicentre clinical studies</li>
-        <li>Enable collaboration across the UK</li>
-        <li>Expand imaging beyond MRI (CT, ultrasound)</li>
-    </ul>
-</section>
+        <!-- MRI scanner ring - right side -->
+        <g transform="translate(940, 210)">
+          <ellipse cx="0" cy="0" rx="160" ry="160" fill="none" stroke="#2e86c1" stroke-width="18" opacity="0.25" />
+          <ellipse cx="0" cy="0" rx="160" ry="160" fill="none" stroke="#5dade2" stroke-width="3" opacity="0.5" />
+          <ellipse cx="0" cy="0" rx="130" ry="130" fill="none" stroke="#5dade2" stroke-width="1.5" opacity="0.3" />
+          <ellipse cx="0" cy="0" rx="100" ry="100" fill="none" stroke="#5dade2" stroke-width="1" opacity="0.2" />
+          <!-- Cross hairs -->
+          <line x1="-170" y1="0" x2="170" y2="0" stroke="#5dade2" stroke-width="1" opacity="0.2" />
+          <line x1="0" y1="-170" x2="0" y2="170" stroke="#5dade2" stroke-width="1" opacity="0.2" />
+          <!-- MRI glow -->
+          <ellipse cx="0" cy="0" rx="130" ry="130" fill="url(#mriGlow)" />
+        </g>
 
-<section id="projects">
-    <h2>Key Projects</h2>
-    <ul>
-        <li>AFiRM Study</li>
-        <li>iBEAt Study</li>
-        <li>UKRIN-MAPS</li>
-    </ul>
-</section>
+        <!-- Abstract MRI scan lines -->
+        <g opacity="0.12">
+          <line x1="750" y1="50" x2="750" y2="370" stroke="#5dade2" stroke-width="1" />
+          <line x1="780" y1="50" x2="780" y2="370" stroke="#5dade2" stroke-width="1" />
+          <line x1="810" y1="50" x2="810" y2="370" stroke="#5dade2" stroke-width="1" />
+          <line x1="840" y1="50" x2="840" y2="370" stroke="#5dade2" stroke-width="1" />
+          <line x1="870" y1="50" x2="870" y2="370" stroke="#5dade2" stroke-width="1" />
+        </g>
 
-<section id="events">
-    <h2>Meetings</h2>
-    <p>Regular UKRIN meetings bring together researchers to collaborate and share advances.</p>
-</section>
+        <!-- Left kidney shape -->
+        <g transform="translate(580, 200)">
+          <path d="M0,-90 C35,-90 70,-65 75,-30 C80,10 60,55 30,75 C10,88 -15,85 -30,70 C-55,48 -60,10 -55,-30 C-50,-65 -30,-90 0,-90 Z"
+            fill="url(#kidneyL)" opacity="0.7" />
+          <!-- Cortex highlight -->
+          <path d="M0,-78 C28,-78 58,-56 63,-26 C67,8 50,48 24,65 C8,76 -12,73 -24,60 C-46,40 -50,8 -45,-26 C-40,-56 -24,-78 0,-78 Z"
+            fill="none" stroke="#85c1e9" stroke-width="1.5" opacity="0.5" />
+          <!-- Medulla hint -->
+          <ellipse cx="0" cy="0" rx="28" ry="40" fill="#1a5276" opacity="0.6" />
+          <!-- Renal pelvis -->
+          <path d="M0,15 Q12,5 20,20 Q12,35 0,38 Q-12,35 -20,20 Q-12,5 0,15 Z" fill="#5dade2" opacity="0.5" />
+        </g>
 
-<section>
-    <h2>Visit Kidney Research UK Website</h2>
-    <a class="button" href="https://www.kidneyresearchuk.org/research/research-networks/uk-renal-imaging-network/" target="_blank">
-        Go to KRUK Website
-    </a>
-</section>
+        <!-- Right kidney shape (mirrored) -->
+        <g transform="translate(660, 210) scale(-1,1)">
+          <path d="M0,-80 C32,-80 62,-58 67,-27 C72,9 53,50 27,68 C9,80 -13,77 -27,63 C-50,43 -54,9 -49,-27 C-44,-58 -26,-80 0,-80 Z"
+            fill="url(#kidneyR)" opacity="0.7" />
+          <path d="M0,-68 C25,-68 50,-48 55,-22 C59,9 42,42 20,57 C6,67 -10,64 -21,52 C-42,34 -45,9 -40,-22 C-35,-48 -20,-68 0,-68 Z"
+            fill="none" stroke="#85c1e9" stroke-width="1.5" opacity="0.5" />
+          <ellipse cx="0" cy="0" rx="25" ry="35" fill="#1a5276" opacity="0.6" />
+          <path d="M0,12 Q10,4 17,17 Q10,30 0,33 Q-10,30 -17,17 Q-10,4 0,12 Z" fill="#5dade2" opacity="0.5" />
+        </g>
 
+        <!-- Connection (aorta/vessels) -->
+        <g opacity="0.4">
+          <path d="M580,210 Q620,205 640,210 Q660,215 660,210" fill="none" stroke="#5dade2" stroke-width="4" />
+          <path d="M615,135 Q618,115 620,80" fill="none" stroke="#5dade2" stroke-width="2.5" />
+          <path d="M615,285 Q618,305 620,340" fill="none" stroke="#5dade2" stroke-width="2.5" />
+        </g>
+
+        <!-- Biomarker data lines (left side) -->
+        <g transform="translate(60, 80)" opacity="0.6">
+          <text font-family="monospace" font-size="10" fill="#5dade2" opacity="0.7">T1 MAPPING</text>
+          <rect x="0" y="14" width="200" height="2" fill="#5dade2" opacity="0.3" rx="1" />
+          <rect x="0" y="14" width="148" height="2" fill="#5dade2" opacity="0.8" rx="1" />
+
+          <text font-family="monospace" font-size="10" fill="#5dade2" opacity="0.7" y="38">ASL PERFUSION</text>
+          <rect x="0" y="52" width="200" height="2" fill="#5dade2" opacity="0.3" rx="1" />
+          <rect x="0" y="52" width="112" height="2" fill="#85c1e9" opacity="0.8" rx="1" />
+
+          <text font-family="monospace" font-size="10" fill="#5dade2" opacity="0.7" y="76">BOLD / R2*</text>
+          <rect x="0" y="90" width="200" height="2" fill="#5dade2" opacity="0.3" rx="1" />
+          <rect x="0" y="90" width="170" height="2" fill="#5dade2" opacity="0.8" rx="1" />
+
+          <text font-family="monospace" font-size="10" fill="#5dade2" opacity="0.7" y="114">DWI / ADC</text>
+          <rect x="0" y="128" width="200" height="2" fill="#5dade2" opacity="0.3" rx="1" />
+          <rect x="0" y="128" width="90" height="2" fill="#85c1e9" opacity="0.8" rx="1" />
+
+          <text font-family="monospace" font-size="10" fill="#5dade2" opacity="0.7" y="152">T2 MAPPING</text>
+          <rect x="0" y="166" width="200" height="2" fill="#5dade2" opacity="0.3" rx="1" />
+          <rect x="0" y="166" width="130" height="2" fill="#5dade2" opacity="0.8" rx="1" />
+        </g>
+
+        <!-- Network nodes (bottom left) -->
+        <g transform="translate(60, 310)" opacity="0.5">
+          <circle cx="0" cy="0" r="5" fill="#5dade2" />
+          <circle cx="60" cy="-20" r="5" fill="#5dade2" />
+          <circle cx="120" cy="10" r="5" fill="#5dade2" />
+          <circle cx="90" cy="-50" r="5" fill="#5dade2" />
+          <circle cx="30" cy="-50" r="5" fill="#5dade2" />
+          <line x1="0" y1="0" x2="60" y2="-20" stroke="#5dade2" stroke-width="1" />
+          <line x1="60" y1="-20" x2="120" y2="10" stroke="#5dade2" stroke-width="1" />
+          <line x1="60" y1="-20" x2="90" y2="-50" stroke="#5dade2" stroke-width="1" />
+          <line x1="60" y1="-20" x2="30" y2="-50" stroke="#5dade2" stroke-width="1" />
+          <line x1="0" y1="0" x2="30" y2="-50" stroke="#5dade2" stroke-width="1" />
+        </g>
+
+        <!-- Subtle grid overlay -->
+        <rect width="1200" height="420" fill="none" stroke="#2e86c1" stroke-width="0.3" opacity="0.05"
+          style="stroke-dasharray: 40 40;" />
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Est. 2016 · 15 National Meetings</div>
+      <h1 class="hero-title">UK Renal Imaging<br>Network</h1>
+      <p class="hero-tagline">Advancing kidney MRI from bench to bedside — across every centre, scanner, and stage of disease.</p>
+      <div class="hero-cta">
+        <a href="studies.html" class="btn btn-primary">Explore Studies</a>
+        <a href="events.html" class="btn btn-outline">Next Meeting &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION STATEMENT -->
+  <section class="mission">
+    <div class="container">
+      <div class="mission-inner">
+        <div class="mission-label">Our Mission</div>
+        <h2 class="mission-heading">Transforming how the kidney is seen — and understood</h2>
+        <p class="mission-body">
+          UKRIN brings together major UK renal MRI research centres through a national group of MR physicists, radiologists, and clinicians dedicated to developing imaging methods to study the kidney. We co-ordinate activities across human kidney MRI in chronic kidney disease, AKI, transplant, dialysis, and cancer — while expanding into preclinical MRI, CT, ultrasound, and whole-body imaging in kidney disease.
+        </p>
+        <div class="mission-aims">
+          <div class="aim-card">
+            <div class="aim-icon">&#9673;</div>
+            <h3>Harmonise Methods</h3>
+            <p>Build a shared framework for kidney imaging acquisition, harmonisation, and AI-based reconstruction across all UK centres and vendors.</p>
+          </div>
+          <div class="aim-card">
+            <div class="aim-icon">&#9672;</div>
+            <h3>Multicentre Research</h3>
+            <p>Generate and deliver research proposals for clinical studies involving imaging, providing expertise to the wider UK Kidney Research Consortium (UKKRC).</p>
+          </div>
+          <div class="aim-card">
+            <div class="aim-icon">&#9671;</div>
+            <h3>Clinical Translation</h3>
+            <p>Generate evidence and grow clinical endorsement to support adoption of new imaging approaches from bench to bedside and into routine practice.</p>
+          </div>
+          <div class="aim-card">
+            <div class="aim-icon">&#9670;</div>
+            <h3>International Links</h3>
+            <p>Connect with RENALMRI.org and the ISMRM Renal MRI Study Group to align UK research within the global renal imaging community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="quicklinks">
+    <div class="container">
+      <div class="ql-grid">
+        <a href="events.html" class="ql-card">
+          <span class="ql-num">15</span>
+          <span class="ql-label">National Meetings held since 2016</span>
+          <span class="ql-cta">View Events &rarr;</span>
+        </a>
+        <a href="studies.html" class="ql-card">
+          <span class="ql-num">£2.7M+</span>
+          <span class="ql-label">Funding secured for renal MRI research</span>
+          <span class="ql-cta">Our Studies &rarr;</span>
+        </a>
+        <a href="studies.html" class="ql-card">
+          <span class="ql-num">10</span>
+          <span class="ql-label">AFiRM recruitment sites across the UK</span>
+          <span class="ql-cta">AFiRM Study &rarr;</span>
+        </a>
+        <a href="news.html" class="ql-card">
+          <span class="ql-num">420+</span>
+          <span class="ql-label">CKD patients enrolled in multicentre trials</span>
+          <span class="ql-cta">Latest News &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-abbr">UKRIN</span>
+        <p>UK Renal Imaging Network<br>
+        Supported by the UK Kidney Research Consortium (UKKRC)</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.kidneyresearchuk.org/research/uk-renal-imaging-network" target="_blank" rel="noopener">kidneyresearchuk.org</a>
+        <a href="https://renalmri.org" target="_blank" rel="noopener">renalmri.org</a>
+        <a href="https://github.com/UKRIN-MAPS/ukat" target="_blank" rel="noopener">UKAT on GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js"></script>
 </body>
 </html>
